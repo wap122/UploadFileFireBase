@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UploadFileFireBase</string>
+    <string name="ch_n_nh">Chọn ảnh</string>
+    <string name="runtime_permissions_txt">Chấp nhập các permission đi mà :(</string>
+</resources>

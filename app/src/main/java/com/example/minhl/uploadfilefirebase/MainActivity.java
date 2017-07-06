@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void chooseImage(View view) {
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("video/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
@@ -50,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageView.setImageBitmap(bitmap);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                imageView.setImageBitmap(bitmap);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
             progressDialog.setTitle("Uploading");
             progressDialog.show();
 
-            StorageReference imageRef = storageReference.child("images/pic.jpg");
+            StorageReference imageRef = storageReference.child("video/demo.mp4");
+
             imageRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
